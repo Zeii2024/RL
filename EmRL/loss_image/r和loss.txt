@@ -1,0 +1,406 @@
+target:[25,6]
+obs: tensor([25.,  7.,  3.,  1.])
+action: 0  # action是0，为什么会有10的奖励？？
+q_eval: tensor(0.3369, grad_fn=<SelectBackward>)
+r: 10
+q_target:  tensor(1.3049, grad_fn=<AddBackward0>)
+loss: tensor([0.9371, 0.0000, 0.0000, 0.0000, 0.0000], grad_fn=<PowBackward0>)
+
+是环境有问题？
+action与环境的step不一致？？？
+
+
+同一个obs，网络的连续输出值：
+obs: tensor([24.,  9.,  3.,  1.])
+actions_value: tensor([  1.5452,   1.6042,   1.6033, -10.0000,   1.6047],
+       grad_fn=<CopySlices>)
+action: 4
+
+obs: tensor([24.,  9.,  3.,  1.])
+actions_value: tensor([  2.2803,   1.6043,   1.6022, -10.0000,   1.6038],
+       grad_fn=<CopySlices>)
+action: 0
+
+obs: tensor([24.,  9.,  3.,  1.])
+actions_value: tensor([  2.5774,   1.6043,   1.6020, -10.0000,   1.6005],
+       grad_fn=<CopySlices>)
+action: 0
+
+obs: tensor([24.,  9.,  3.,  1.])
+actions_value: tensor([  2.2740,   1.6043,   1.6021, -10.0000,   1.6009],
+       grad_fn=<CopySlices>)
+action: 0
+
+obs: tensor([24.,  9.,  3.,  1.])
+actions_value: tensor([  2.0252,   1.6043,   1.6027, -10.0000,   1.6014],
+       grad_fn=<CopySlices>)
+action: 0
+
+obs: tensor([24.,  9.,  3.,  1.])
+actions_value: tensor([  1.7754,   1.6038,   1.6016, -10.0000,   1.6058],
+       grad_fn=<CopySlices>)
+action: 0
+
+random
+obs: tensor([24.,  9.,  3.,  1.])
+actions_value: tensor([  1.6288,   1.6043,   1.6803, -10.0000,   1.6482],
+       grad_fn=<CopySlices>)
+action: 2
+
+
+看一下这个决策过程：
+obs: tensor([24.,  9.,  3.,  1.])
+actions_value: tensor([  1.2680,   2.0568,   1.5559, -10.0000,   1.2680],
+       grad_fn=<CopySlices>)
+action: 1
+
+obs: tensor([25.,  8.,  3.,  1.])
+actions_value: tensor([  1.2678, -10.0000,   1.1806,   0.1977,   1.2678],
+       grad_fn=<CopySlices>)
+action: 4
+
+obs: tensor([25.,  8.,  3.,  1.])
+actions_value: tensor([  1.2678, -10.0000,   1.2546,   0.1977,   1.2677],
+       grad_fn=<CopySlices>)
+action: 0
+
+obs: tensor([25.,  8.,  3.,  1.])
+actions_value: tensor([  1.2678, -10.0000,   1.2785,   0.1977,   1.2676],
+       grad_fn=<CopySlices>)
+action: 2
+
+ - Update t net
+obs: tensor([25.,  7.,  3.,  1.])
+actions_value: tensor([  1.1653, -10.0000,   1.2042, -10.0000,   1.2080],
+       grad_fn=<CopySlices>)
+action: 4
+
+obs: tensor([25.,  7.,  3.,  1.])
+actions_value: tensor([  1.1293, -10.0000,   1.1538, -10.0000,   1.1582],
+       grad_fn=<CopySlices>)
+action: 4
+
+obs: tensor([25.,  7.,  3.,  1.])
+actions_value: tensor([  1.1508, -10.0000,   1.1409, -10.0000,   1.1649],
+       grad_fn=<CopySlices>)
+action: 4
+
+obs: tensor([25.,  7.,  3.,  1.])
+actions_value: tensor([  1.1527, -10.0000,   1.1441, -10.0000,   1.1417],
+       grad_fn=<CopySlices>)
+action: 0
+
+obs: tensor([25.,  7.,  3.,  1.])
+actions_value: tensor([  1.1505, -10.0000,   1.1500, -10.0000,   1.1482],
+       grad_fn=<CopySlices>)
+action: 0
+
+obs: tensor([25.,  7.,  3.,  1.])
+actions_value: tensor([  1.1504, -10.0000,   1.1518, -10.0000,   1.1479],
+       grad_fn=<CopySlices>)
+action: 2
+
+
+依然是同一个obs的决策：
+obs: tensor([24.,  9.,  3.,  1.])
+actions_value: tensor([  4.6227,   5.1604,   5.2926, -10.0000,   4.4795],
+       grad_fn=<CopySlices>)
+action: 2
+
+steps out
+random
+ - Update t net
+
+
+obs: tensor([24.,  9.,  3.,  1.])
+actions_value: tensor([  2.9030,   2.1459,   2.7741, -10.0000,   2.5950],
+       grad_fn=<CopySlices>)
+action: 0
+
+random
+ - Update t net
+
+ - Update t net
+obs: tensor([24.,  9.,  3.,  1.])
+actions_value: tensor([  3.6361,   3.5427,   4.2517, -10.0000,   3.4007],
+       grad_fn=<CopySlices>)
+action: 2
+
+random
+steps out
+
+obs: tensor([24.,  9.,  3.,  1.])
+actions_value: tensor([  2.8574,   3.2447,   2.9213, -10.0000,   3.3417],
+       grad_fn=<CopySlices>)
+action: 4
+
+obs: tensor([24.,  9.,  3.,  1.])
+actions_value: tensor([  2.7890,   3.2416,   2.7536, -10.0000,   2.4785],
+       grad_fn=<CopySlices>)
+	   
+	   
+	   
+来看看训练和决策都包括的
+obs: tensor([24.,  9.,  3.,  1.])
+actions_value: tensor([  3.7560,   3.7518,   3.8090, -10.0000,   3.7475],
+       grad_fn=<CopySlices>)
+action: 2
+
+obs: tensor([25.,  7.,  3.,  1.])
+action: 2
+obs_next: tensor([25.,  6.,  3.,  1.])
+r: 10
+q_pre: tensor([3.4565, 3.5105, 3.4565, 3.6518, 3.4566], grad_fn=<AddBackward0>)
+q_tar: tensor([3.4565, 3.5105, 4.4565, 3.6518, 3.4566], grad_fn=<CopySlices>)
+q_eval: tensor(3.4565, grad_fn=<SelectBackward>)
+q_target:  tensor(4.4565, grad_fn=<AddBackward0>)
+loss: tensor([0.0000, 0.0000, 1.0000, 0.0000, 0.0000], grad_fn=<PowBackward0>)
+obs: tensor([24.,  9.,  3.,  1.])
+action: 0
+obs_next: tensor([24.,  8.,  3.,  1.])
+r: 0.0
+q_pre: tensor([3.4564, 3.3351, 4.0853, 3.7515, 3.4564], grad_fn=<AddBackward0>)
+q_tar: tensor([3.4564, 3.3351, 4.0853, 3.7515, 3.4564], grad_fn=<CopySlices>)
+q_eval: tensor(3.4564, grad_fn=<SelectBackward>)
+q_target:  tensor(3.4564, grad_fn=<AddBackward0>)
+loss: tensor([2.7063e-10, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00],
+       grad_fn=<PowBackward0>)
+obs: tensor([24.,  9.,  3.,  1.])
+action: 1
+obs_next: tensor([25.,  9.,  2.,  1.])
+r: 0.0
+q_pre: tensor([3.4565, 3.3630, 3.4586, 3.7559, 3.4567], grad_fn=<AddBackward0>)
+q_tar: tensor([3.4565, 3.3724, 3.4586, 3.7559, 3.4567], grad_fn=<CopySlices>)
+q_eval: tensor(3.3630, grad_fn=<SelectBackward>)
+q_target:  tensor(3.3724, grad_fn=<AddBackward0>)
+loss: tensor([0.0000e+00, 8.7419e-05, 0.0000e+00, 0.0000e+00, 0.0000e+00],
+       grad_fn=<PowBackward0>)
+obs: tensor([24.,  9.,  3.,  1.])
+action: 2
+obs_next: tensor([24.,  8.,  3.,  1.])
+r: 0.0
+q_pre: tensor([3.4565, 3.3983, 3.4681, 3.7559, 3.4562], grad_fn=<AddBackward0>)
+q_tar: tensor([3.4565, 3.3983, 3.4670, 3.7559, 3.4562], grad_fn=<CopySlices>)
+q_eval: tensor(3.4681, grad_fn=<SelectBackward>)
+q_target:  tensor(3.4670, grad_fn=<AddBackward0>)
+loss: tensor([0.0000e+00, 0.0000e+00, 1.3493e-06, 0.0000e+00, 0.0000e+00],
+       grad_fn=<PowBackward0>)
+obs: tensor([24.,  9.,  3.,  1.])
+action: 1
+obs_next: tensor([25.,  9.,  2.,  1.])
+r: 0.0
+q_pre: tensor([3.4566, 3.3389, 3.4565, 3.1427, 3.4565], grad_fn=<AddBackward0>)
+q_tar: tensor([3.4566, 3.3507, 3.4565, 3.1427, 3.4565], grad_fn=<CopySlices>)
+q_eval: tensor(3.3389, grad_fn=<SelectBackward>)
+q_target:  tensor(3.3507, grad_fn=<AddBackward0>)
+loss: tensor([0.0000, 0.0001, 0.0000, 0.0000, 0.0000], grad_fn=<PowBackward0>)
+obs: tensor([25.,  7.,  3.,  1.])
+action: 2
+obs_next: tensor([25.,  6.,  3.,  1.])
+r: 10
+q_pre: tensor([3.4572, 3.6657, 3.4565, 3.1427, 3.4564], grad_fn=<AddBackward0>)
+q_tar: tensor([3.4572, 3.6657, 4.4565, 3.1427, 3.4564], grad_fn=<CopySlices>)
+q_eval: tensor(3.4565, grad_fn=<SelectBackward>)
+q_target:  tensor(4.4565, grad_fn=<AddBackward0>)
+loss: tensor([0.0000, 0.0000, 1.0000, 0.0000, 0.0000], grad_fn=<PowBackward0>)
+ - Update t net
+obs: tensor([24.,  9.,  3.,  1.])
+action: 2
+obs_next: tensor([24.,  8.,  3.,  1.])
+r: 0.0
+q_pre: tensor([3.7748, 3.8495, 3.7726, 3.1427, 3.7713], grad_fn=<AddBackward0>)
+q_tar: tensor([3.7748, 3.8495, 3.7727, 3.1427, 3.7713], grad_fn=<CopySlices>)
+q_eval: tensor(3.7726, grad_fn=<SelectBackward>)
+q_target:  tensor(3.7727, grad_fn=<AddBackward0>)
+loss: tensor([0.0000e+00, 0.0000e+00, 3.2470e-09, 0.0000e+00, 0.0000e+00],
+       grad_fn=<PowBackward0>)
+obs: tensor([25.,  8.,  3.,  1.])
+action: 3
+obs_next: tensor([24.,  8.,  0.,  1.])
+r: 0.0
+q_pre: tensor([3.7780, 3.8533, 3.7731, 3.1427, 3.7727], grad_fn=<AddBackward0>)
+q_tar: tensor([3.7780, 3.8533, 3.7731, 3.2058, 3.7727], grad_fn=<CopySlices>)
+q_eval: tensor(3.1427, grad_fn=<SelectBackward>)
+q_target:  tensor(3.2058, grad_fn=<AddBackward0>)
+loss: tensor([0.0000, 0.0000, 0.0000, 0.0040, 0.0000], grad_fn=<PowBackward0>)
+obs: tensor([24.,  9.,  3.,  1.])
+action: 0
+obs_next: tensor([24.,  8.,  3.,  1.])
+r: 0.0
+q_pre: tensor([3.7630, 3.8535, 3.7732, 4.5336, 3.7732], grad_fn=<AddBackward0>)
+q_tar: tensor([3.7640, 3.8535, 3.7732, 4.5336, 3.7732], grad_fn=<CopySlices>)
+q_eval: tensor(3.7630, grad_fn=<SelectBackward>)
+q_target:  tensor(3.7640, grad_fn=<AddBackward0>)
+loss: tensor([1.0369e-06, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00],
+       grad_fn=<PowBackward0>)
+obs: tensor([25.,  8.,  3.,  1.])
+action: 3
+obs_next: tensor([24.,  8.,  0.,  1.])
+r: 0.0
+q_pre: tensor([3.7788, 3.8535, 3.7732, 4.5379, 3.7734], grad_fn=<AddBackward0>)
+q_tar: tensor([3.7788, 3.8535, 3.7732, 4.4614, 3.7734], grad_fn=<CopySlices>)
+q_eval: tensor(4.5379, grad_fn=<SelectBackward>)
+q_target:  tensor(4.4614, grad_fn=<AddBackward0>)
+loss: tensor([0.0000, 0.0000, 0.0000, 0.0058, 0.0000], grad_fn=<PowBackward0>)
+obs: tensor([24.,  9.,  3.,  1.])
+action: 1
+obs_next: tensor([25.,  9.,  2.,  1.])
+r: 0.0
+q_pre: tensor([3.7730, 3.8535, 3.7732, 3.1849, 3.7733], grad_fn=<AddBackward0>)
+q_tar: tensor([3.7730, 3.8454, 3.7732, 3.1849, 3.7733], grad_fn=<CopySlices>)
+q_eval: tensor(3.8535, grad_fn=<SelectBackward>)
+q_target:  tensor(3.8454, grad_fn=<AddBackward0>)
+loss: tensor([0.0000e+00, 6.4468e-05, 0.0000e+00, 0.0000e+00, 0.0000e+00],
+       grad_fn=<PowBackward0>)
+steps out
+obs: tensor([24.,  9.,  3.,  1.])
+action: 0
+obs_next: tensor([24.,  8.,  3.,  1.])
+r: 0.0
+q_pre: tensor([3.7732, 4.0702, 3.7732, 3.6510, 3.7732], grad_fn=<AddBackward0>)
+q_tar: tensor([3.7732, 4.0702, 3.7732, 3.6510, 3.7732], grad_fn=<CopySlices>)
+q_eval: tensor(3.7732, grad_fn=<SelectBackward>)
+q_target:  tensor(3.7732, grad_fn=<AddBackward0>)
+loss: tensor([2.0464e-12, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00],
+       grad_fn=<PowBackward0>)
+obs: tensor([25.,  8.,  3.,  1.])
+action: 3
+obs_next: tensor([24.,  8.,  0.,  1.])
+r: 0.0
+q_pre: tensor([3.7732, 4.1532, 3.7732, 3.3820, 3.7728], grad_fn=<AddBackward0>)
+q_tar: tensor([3.7732, 4.1532, 3.7732, 3.4211, 3.7728], grad_fn=<CopySlices>)
+q_eval: tensor(3.3820, grad_fn=<SelectBackward>)
+q_target:  tensor(3.4211, grad_fn=<AddBackward0>)
+loss: tensor([0.0000, 0.0000, 0.0000, 0.0015, 0.0000], grad_fn=<PowBackward0>)
+obs: tensor([25.,  8.,  3.,  1.])
+action: 4
+obs_next: tensor([25.,  8.,  3.,  1.])
+r: 0.0
+q_pre: tensor([3.7731, 2.9880, 3.7732, 4.0570, 3.7732], grad_fn=<AddBackward0>)
+q_tar: tensor([3.7731, 2.9880, 3.7732, 4.0570, 3.7732], grad_fn=<CopySlices>)
+q_eval: tensor(3.7732, grad_fn=<SelectBackward>)
+q_target:  tensor(3.7732, grad_fn=<AddBackward0>)
+loss: tensor([0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 1.6428e-11],
+       grad_fn=<PowBackward0>)
+obs: tensor([24.,  9.,  3.,  1.])
+action: 1
+obs_next: tensor([25.,  9.,  2.,  1.])
+r: 0.0
+q_pre: tensor([3.7731, 2.9875, 3.7732, 4.0570, 3.7732], grad_fn=<AddBackward0>)
+q_tar: tensor([3.7731, 3.0661, 3.7732, 4.0570, 3.7732], grad_fn=<CopySlices>)
+q_eval: tensor(2.9875, grad_fn=<SelectBackward>)
+q_target:  tensor(3.0661, grad_fn=<AddBackward0>)
+loss: tensor([0.0000, 0.0062, 0.0000, 0.0000, 0.0000], grad_fn=<PowBackward0>)
+obs: tensor([24.,  9.,  3.,  1.])
+action: 4
+obs_next: tensor([24.,  9.,  3.,  1.])
+r: 0.0
+q_pre: tensor([3.7733, 4.7857, 3.7732, 4.0571, 3.7732], grad_fn=<AddBackward0>)
+q_tar: tensor([3.7733, 4.7857, 3.7732, 4.0571, 3.7732], grad_fn=<CopySlices>)
+q_eval: tensor(3.7732, grad_fn=<SelectBackward>)
+q_target:  tensor(3.7732, grad_fn=<AddBackward0>)
+loss: tensor([0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 1.8417e-11],
+       grad_fn=<PowBackward0>)
+obs: tensor([25.,  8.,  3.,  1.])
+action: 3
+obs_next: tensor([24.,  8.,  0.,  1.])
+r: 0.0
+q_pre: tensor([3.7732, 4.8582, 3.7732, 4.0571, 3.7732], grad_fn=<AddBackward0>)
+q_tar: tensor([3.7732, 4.8582, 3.7732, 4.0287, 3.7732], grad_fn=<CopySlices>)
+q_eval: tensor(4.0571, grad_fn=<SelectBackward>)
+q_target:  tensor(4.0287, grad_fn=<AddBackward0>)
+loss: tensor([0.0000, 0.0000, 0.0000, 0.0008, 0.0000], grad_fn=<PowBackward0>)
+obs: tensor([25.,  8.,  3.,  1.])
+action: 3
+obs_next: tensor([24.,  8.,  0.,  1.])
+r: 0.0
+q_pre: tensor([3.7738, 4.8582, 3.7732, 3.5226, 3.7729], grad_fn=<AddBackward0>)
+q_tar: tensor([3.7738, 4.8582, 3.7732, 3.5477, 3.7729], grad_fn=<CopySlices>)
+q_eval: tensor(3.5226, grad_fn=<SelectBackward>)
+q_target:  tensor(3.5477, grad_fn=<AddBackward0>)
+loss: tensor([0.0000, 0.0000, 0.0000, 0.0006, 0.0000], grad_fn=<PowBackward0>)
+ - Update t net
+obs: tensor([25.,  8.,  3.,  1.])
+action: 2
+obs_next: tensor([25.,  7.,  3.,  1.])
+r: 0.0
+q_pre: tensor([4.4299, 4.5151, 4.3615, 4.0176, 4.3492], grad_fn=<AddBackward0>)
+q_tar: tensor([4.4299, 4.5151, 4.3625, 4.0176, 4.3492], grad_fn=<CopySlices>)
+q_eval: tensor(4.3615, grad_fn=<SelectBackward>)
+q_target:  tensor(4.3625, grad_fn=<AddBackward0>)
+loss: tensor([0.0000e+00, 0.0000e+00, 1.1945e-06, 0.0000e+00, 0.0000e+00],
+       grad_fn=<PowBackward0>)
+obs: tensor([24.,  9.,  3.,  1.])
+action: 1
+obs_next: tensor([25.,  9.,  2.,  1.])
+r: 0.0
+q_pre: tensor([4.3879, 4.3255, 4.3631, 4.0176, 4.4153], grad_fn=<AddBackward0>)
+q_tar: tensor([4.3879, 4.3302, 4.3631, 4.0176, 4.4153], grad_fn=<CopySlices>)
+q_eval: tensor(4.3255, grad_fn=<SelectBackward>)
+q_target:  tensor(4.3302, grad_fn=<AddBackward0>)
+loss: tensor([0.0000e+00, 2.1971e-05, 0.0000e+00, 0.0000e+00, 0.0000e+00],
+       grad_fn=<PowBackward0>)
+obs: tensor([24.,  9.,  3.,  1.])
+action: 4
+obs_next: tensor([24.,  9.,  3.,  1.])
+r: 0.0
+q_pre: tensor([4.3732, 4.5175, 4.3717, 4.0176, 4.3587], grad_fn=<AddBackward0>)
+q_tar: tensor([4.3732, 4.5175, 4.3717, 4.0176, 4.3601], grad_fn=<CopySlices>)
+q_eval: tensor(4.3587, grad_fn=<SelectBackward>)
+q_target:  tensor(4.3601, grad_fn=<AddBackward0>)
+loss: tensor([0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 1.8637e-06],
+       grad_fn=<PowBackward0>)
+obs: tensor([25.,  7.,  3.,  1.])
+action: 0
+obs_next: tensor([25.,  7.,  3.,  1.])
+r: 0.0
+q_pre: tensor([4.3723, 4.4653, 4.3724, 4.0176, 4.3675], grad_fn=<AddBackward0>)
+q_tar: tensor([4.3723, 4.4653, 4.3724, 4.0176, 4.3675], grad_fn=<CopySlices>)
+q_eval: tensor(4.3723, grad_fn=<SelectBackward>)
+q_target:  tensor(4.3723, grad_fn=<AddBackward0>)
+loss: tensor([1.5370e-10, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00],
+       grad_fn=<PowBackward0>)
+obs: tensor([25.,  8.,  3.,  1.])
+action: 3
+obs_next: tensor([24.,  8.,  0.,  1.])
+r: 0.0
+q_pre: tensor([4.3723, 4.2661, 4.3724, 4.0176, 4.3779], grad_fn=<AddBackward0>)
+q_tar: tensor([4.3723, 4.2661, 4.3724, 4.0531, 4.3779], grad_fn=<CopySlices>)
+q_eval: tensor(4.0176, grad_fn=<SelectBackward>)
+q_target:  tensor(4.0531, grad_fn=<AddBackward0>)
+loss: tensor([0.0000, 0.0000, 0.0000, 0.0013, 0.0000], grad_fn=<PowBackward0>)
+obs: tensor([24.,  9.,  3.,  1.])
+actions_value: tensor([  4.3725,   4.2303,   4.3725, -10.0000,   4.3722],
+       grad_fn=<CopySlices>)
+action: 2
+
+obs: tensor([24.,  9.,  3.,  1.])
+action: 0
+obs_next: tensor([24.,  8.,  3.,  1.])
+r: 0.0
+q_pre: tensor([4.3724, 4.2209, 4.3725, 4.8103, 4.3724], grad_fn=<AddBackward0>)
+q_tar: tensor([4.3724, 4.2209, 4.3725, 4.8103, 4.3724], grad_fn=<CopySlices>)
+q_eval: tensor(4.3724, grad_fn=<SelectBackward>)
+q_target:  tensor(4.3724, grad_fn=<AddBackward0>)
+loss: tensor([9.0949e-13, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00],
+       grad_fn=<PowBackward0>)
+obs: tensor([24.,  9.,  3.,  1.])
+action: 0
+obs_next: tensor([24.,  8.,  3.,  1.])
+r: 0.0
+q_pre: tensor([4.3723, 4.2198, 4.3725, 4.8103, 4.3724], grad_fn=<AddBackward0>)
+q_tar: tensor([4.3723, 4.2198, 4.3725, 4.8103, 4.3724], grad_fn=<CopySlices>)
+q_eval: tensor(4.3723, grad_fn=<SelectBackward>)
+q_target:  tensor(4.3723, grad_fn=<AddBackward0>)
+loss: tensor([2.7512e-11, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00],
+       grad_fn=<PowBackward0>)
+obs: tensor([25.,  8.,  3.,  1.])
+action: 4
+obs_next: tensor([25.,  8.,  3.,  1.])
+r: 0.0
+q_pre: tensor([4.3724, 4.4224, 4.3724, 4.8103, 4.3722], grad_fn=<AddBackward0>)
+q_tar: tensor([4.3724, 4.4224, 4.3724, 4.8103, 4.3723], grad_fn=<CopySlices>)
+q_eval: tensor(4.3722, grad_fn=<SelectBackward>)
+q_target:  tensor(4.3723, grad_fn=<AddBackward0>)
+loss: tensor([0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 1.9122e-10],
+       grad_fn=<PowBackward0>)
